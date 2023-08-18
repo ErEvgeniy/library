@@ -1,0 +1,41 @@
+<form [formGroup]="editForm">
+  <h2 mat-dialog-title>{{action}} book</h2>
+  <mat-dialog-content>
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Author</mat-label>
+        <mat-select required formControlName="author">
+          <mat-option *ngFor="let author of authors" [value]="author.id">
+            {{getFullName(author)}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="form-field">
+        <mat-label>Genre</mat-label>
+        <mat-select required formControlName="genre">
+          <mat-option *ngFor="let genre of genres" [value]="genre.id">
+            {{genre.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onSaveClick()" [disabled]="disableSaveButton" color="primary">Save</button>
+    <button mat-raised-button (click)="onCancelClick()">Cancel</button>
+  </mat-dialog-actions>
+</form>

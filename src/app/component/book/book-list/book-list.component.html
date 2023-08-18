@@ -1,0 +1,60 @@
+<div class="main-container">
+  <div class="management">
+    <div class="title">
+      <h1>Book list</h1>
+    </div>
+    <div class="operation">
+      <button mat-raised-button (click)="onCreateBookClick()">Create book</button>
+    </div>
+  </div>
+  <div class="content mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Id</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let book">{{book.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Name</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let book">{{book.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="genre">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Genre</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let book">{{book.genre.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Author</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let book">{{getBookAuthorFullName(book.author)}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let book">
+          <button class="edit-param" mat-button title="Edit" (click)="onEditBookClick(book)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="edit-param" mat-button title="Delete" (click)="onDeleteBookClick(book)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button class="edit-param" mat-button title="Comments" (click)="onCommentsBookClick(book)">
+            <mat-icon>comment</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let book; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <p *ngIf="isEmptyData() && !loader.showLoader" class="empty-data">Записи не найдены</p>
+  </div>
+</div>

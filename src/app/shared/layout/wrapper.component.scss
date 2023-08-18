@@ -1,0 +1,54 @@
+@import "../styles/colors";
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  header {
+    .control-group {
+      height: inherit;
+      margin-left: auto;
+    }
+
+    .control-item {
+      height: 100%;
+      min-width: auto;
+    }
+  }
+
+  .mat-toolbar {
+    min-height: 64px;
+
+    img {
+      margin-left: 16px;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    flex: 1 0;
+    overflow: hidden;
+    position: relative;
+
+    .content {
+      flex: 1;
+      overflow: auto;
+    }
+  }
+
+  .splash-loader {
+    background-color: rgba(255, 255, 255, 0.75);
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}

@@ -1,0 +1,44 @@
+<div class="main-container">
+  <div class="management">
+    <div class="title">
+      <h1>Comment list</h1>
+    </div>
+    <div class="operation">
+      <button mat-raised-button (click)="onToBookListClick()">To book list</button>
+      <button mat-raised-button (click)="onCreateCommentClick()">Create comment</button>
+    </div>
+  </div>
+  <div class="content mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Id</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let comment">{{comment.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="text">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Text</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let comment">{{comment.text}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let comment">
+          <button class="edit-param" mat-button title="Edit" (click)="onEditCommentClick(comment)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="edit-param" mat-button title="Delete" (click)="onDeleteCommentClick(comment)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let comment; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <p *ngIf="isEmptyData() && !loader.showLoader" class="empty-data">Записи не найдены</p>
+  </div>
+</div>

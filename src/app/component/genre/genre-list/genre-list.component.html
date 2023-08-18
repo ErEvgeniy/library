@@ -1,0 +1,43 @@
+<div class="main-container">
+  <div class="management">
+    <div class="title">
+      <h1>Genre list</h1>
+    </div>
+    <div class="operation">
+      <button mat-raised-button (click)="onCreateGenreClick()">Create genre</button>
+    </div>
+  </div>
+  <div class="content mat-elevation-z8">
+    <mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Id</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let genre">{{genre.id}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>
+          <span>Name</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let genre">{{genre.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        <mat-cell *matCellDef="let genre">
+          <button class="edit-param" mat-button title="Edit" (click)="onEditGenreClick(genre)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button class="edit-param" mat-button title="Delete" (click)="onDeleteGenreClick(genre)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let genre; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <p *ngIf="isEmptyData() && !loader.showLoader" class="empty-data">Записи не найдены</p>
+  </div>
+</div>

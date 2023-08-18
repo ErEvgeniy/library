@@ -1,0 +1,21 @@
+:host {
+
+  .header {
+    margin: 20px 0 40px 0;
+    text-align: center;
+  }
+
+  .form-field {
+    min-width: 100%;
+  }
+
+  .mat-dialog-actions {
+    display: flex;
+    justify-content: center;
+
+    button ~ button {
+      margin-left: 20px;
+    }
+  }
+
+}

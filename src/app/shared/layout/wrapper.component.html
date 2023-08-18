@@ -1,0 +1,18 @@
+<header>
+  <mat-toolbar color="primary">
+    <img src="../../../assets/images/library.svg" alt="Library Application" height="50" width="50">
+    <div class="control-group empty-box">
+      <button mat-button class="control-item empty-box" (click)="navigate('/main')" title="Main">
+        <i class="material-icons">home</i>
+      </button>
+    </div>
+  </mat-toolbar>
+</header>
+<main class="wrapper">
+  <div class="content" id="scroll-area">
+    <router-outlet></router-outlet>
+  </div>
+</main>
+<div class="splash-loader" *ngIf="loader.showLoader">
+  <mat-spinner diameter="100"></mat-spinner>
+</div>
