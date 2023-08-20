@@ -25,7 +25,7 @@ export class BookService {
 
   updateBook(book: Book): Observable<any> {
     return <Observable<any>>
-      this.http.patch(`${BookService.SERVICE_PATH}`, book);
+      this.http.patch(`${BookService.SERVICE_PATH}/${book.id}`, book);
   }
 
   deleteBook(book: Book): Observable<any> {

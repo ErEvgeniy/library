@@ -25,7 +25,7 @@ export class AuthorService {
 
   updateAuthor(author: Author): Observable<any> {
     return <Observable<any>>
-      this.http.patch(`${AuthorService.SERVICE_PATH}`, author);
+      this.http.patch(`${AuthorService.SERVICE_PATH}/${author.id}`, author);
   }
 
   deleteAuthor(author: Author): Observable<any> {

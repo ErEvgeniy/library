@@ -18,18 +18,14 @@ export class CommentService {
       this.http.get(`${CommentService.SERVICE_PATH}/book/${bookId}`);
   }
 
-  createComment(comment: Comment, bookId: string): Observable<any> {
+  createComment(comment: Comment): Observable<any> {
     return <Observable<any>>
-      this.http.post(`${CommentService.SERVICE_PATH}`, comment, {
-        params: {
-          bookId: bookId
-        }
-      });
+      this.http.post(`${CommentService.SERVICE_PATH}`, comment);
   }
 
   updateComment(comment: Comment): Observable<any> {
     return <Observable<any>>
-      this.http.patch(`${CommentService.SERVICE_PATH}`, comment);
+      this.http.patch(`${CommentService.SERVICE_PATH}/${comment.id}`, comment);
   }
 
   deleteComment(comment: Comment): Observable<any> {

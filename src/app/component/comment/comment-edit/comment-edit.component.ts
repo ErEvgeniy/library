@@ -58,9 +58,12 @@ export class CommentEditComponent {
       loader.show();
 
       const request = (data) => this.isEditMode ?
-        this.commentService.updateComment(data) : this.commentService.createComment(data, this.data.bookId);
+        this.commentService.updateComment(data) : this.commentService.createComment(data);
 
-      request(this.editForm.value)
+      const comment: Comment = this.editForm.value;
+      comment.bookId = Number(this.data.bookId);
+
+      request(comment)
         .subscribe(() => {
           loader.hide();
           this.onCancelClick(true);

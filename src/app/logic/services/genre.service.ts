@@ -25,7 +25,7 @@ export class GenreService {
 
   updateGenre(genre: Genre): Observable<any> {
     return <Observable<any>>
-      this.http.patch(`${GenreService.SERVICE_PATH}`, genre);
+      this.http.patch(`${GenreService.SERVICE_PATH}/${genre.id}`, genre);
   }
 
   deleteGenre(genre: Genre): Observable<any> {
