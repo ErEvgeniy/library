@@ -22,7 +22,7 @@ interface Genre {
 
 export
 interface Comment {
-  id: number;
+  id: string;
   text: string;
-  bookId: number;
+  bookId: string;
 }

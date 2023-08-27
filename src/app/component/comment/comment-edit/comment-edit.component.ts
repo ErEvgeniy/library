@@ -61,7 +61,7 @@ export class CommentEditComponent {
         this.commentService.updateComment(data) : this.commentService.createComment(data);
 
       const comment: Comment = this.editForm.value;
-      comment.bookId = Number(this.data.bookId);
+      comment.bookId = this.data.bookId;
 
       request(comment)
         .subscribe(() => {
